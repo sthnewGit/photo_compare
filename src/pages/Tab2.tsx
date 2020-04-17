@@ -2,18 +2,25 @@ import React, { useState } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFab, IonFabButton, IonIcon, IonGrid, IonRow, IonCol, IonImg, IonActionSheet } from '@ionic/react';
 import { camera, trash, close, eye } from 'ionicons/icons';
 import { usePhotoGallery, Photo } from '../hooks/usePhotoGallery';
-import { set, get } from "../services/localStorage";
-import { useFilesystem, base64FromPath } from '@ionic/react-hooks/filesystem';
+import { set } from "../services/localStorage";
+import { isPlatform } from '@ionic/react';
+import { useFilesystem } from '@ionic/react-hooks/filesystem';
 
 const Tab2: React.FC = () => {
   const { deletePhoto, photos, takePhoto } = usePhotoGallery();
   const [photoToDelete, setPhotoToDelete] = useState<Photo>();
+  const { readFile } = useFilesystem();
 
   const submitPhoto = async (photo:Photo) => {
     let photoSelBase64;
     //save image to local storage
-    if (! photo.base64) {
-      photoSelBase64 = await base64FromPath(photo.filepath!);
+    if (isPlatform('hybrid')) {
+      
+      // photoSelBase64 = await base64FromPath(photo.filepath!);
+      const file = await readFile({
+        path: photo.filepath!
+      });
+      photoSelBase64 = file.data;
     } else {
       photoSelBase64 = photo.base64;
     }

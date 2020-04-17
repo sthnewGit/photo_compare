@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Component } from 'react';
 import React from 'react';
 import { IonHeader, IonApp, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton } from '@ionic/react';
-import { get } from "../services/localStorage";
+import { get } from "./localStorage";
 
 class TestService extends Component {
   API_KEY = '211122adf9bf45d5a828f77121bd4498';

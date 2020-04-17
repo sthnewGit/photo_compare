@@ -1,8 +1,8 @@
-import React, {useState, useRef} from 'react';
+import React, {useState } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar ,IonIcon, IonButton, IonInput, IonGrid, IonRow, IonCol, IonCard, IonCardContent} from '@ionic/react';
 import { phonePortraitOutline } from 'ionicons/icons';
 import { Plugins } from '@capacitor/core';
-import { set, get } from "../services/localStorage";
+import { set } from "../services/localStorage";
 import './Tab1.css';
 
 const { Device, Whitelist } = Plugins;
