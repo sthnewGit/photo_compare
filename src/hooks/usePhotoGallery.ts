@@ -6,7 +6,6 @@ import { isPlatform } from '@ionic/react';
 import { CameraResultType, CameraSource, CameraPhoto, Capacitor, FilesystemDirectory } from "@capacitor/core";
 import { Plugins } from '@capacitor/core';
 
-const { Storage } = Plugins;
 const PHOTO_STORAGE = "photos";
 
 export function usePhotoGallery() {
@@ -30,7 +29,6 @@ export function usePhotoGallery() {
           });
           // Web platform only: Save the photo into the base64 field
           photo.base64 = `data:image/jpeg;base64,${file.data}`;
-          alert("base64:" + photo.base64)
         }
       // }
       setPhotos(photosInStorage);

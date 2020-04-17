@@ -1,8 +1,5 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonIcon, IonCard, IonCardContent, IonCardHeader, IonCardTitle } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
-import CompareService from '../components/CompareService';
-import TestService from '../components/TestService';
 import { get } from "../services/localStorage";
 import { phonePortraitOutline } from 'ionicons/icons';
 import './Tab3.css';
@@ -19,7 +16,6 @@ const Tab3: React.FC<{ imagePath: string }> = props => {
   const getPhotoComparison = async () => {
     theDeviceId = await get("personDeviceId");
     deviceID = theDeviceId.value;
-    alert(deviceID);
     photo = await get("selectedPhoto");
     photobase64 = photo.value;
     callwebservice();
@@ -45,7 +41,7 @@ const Tab3: React.FC<{ imagePath: string }> = props => {
       })
       .catch(err => {
         alert(JSON.stringify(err));
-        // console.warn(err);
+        console.warn(err);
       });
   }
 
